@@ -1,0 +1,6 @@
+$custom-colors: (
+  "orange": hsl(26, 100%, 55%),
+  "pale-orange": hsl(25, 100%, 94%)
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
