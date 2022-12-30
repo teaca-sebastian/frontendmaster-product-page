@@ -12988,6 +12988,10 @@ textarea.form-control-lg {
   box-shadow: none;
 }
 
+.w-20 {
+  width: 20%;
+}
+
 .nav-avatar {
   width: 2em;
 }
