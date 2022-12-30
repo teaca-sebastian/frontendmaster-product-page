@@ -40,6 +40,16 @@
     --bs-body-font-family: 'Kumbh Sans';
 }
 
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus,
+.btn-close:focus,
+.btn-close:active,
+.btn-close-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 // navbar and cart widget styles
 
 .nav-avatar {
@@ -57,5 +67,8 @@
     width: 15em;
 }
 
+// offcanvas
 
-// widget cart hover
+.offcanvas {
+    width: 10em;
+}

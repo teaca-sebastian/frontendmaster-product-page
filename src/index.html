@@ -16,8 +16,8 @@
 </head>
 
 <body>
-  <div class="container container-fluid">
-    <div class="navbar navbar-expand-md px-lg-5">
+  <div class="container-md">
+    <div class="navbar navbar-expand-md">
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar">
         <img src="images/icon-menu.svg" alt="">
@@ -49,14 +49,16 @@
       </div>
       <div class="dropdown">
         <a class="btn border-0 cart-button" type="button" aria-expanded="false" href="#" data-bs-toggle="dropdown">
-          <i class="bi-cart2 fs-3"></i>
+          <i class="bi-basket2-fill text-muted fs-3"></i>
         </a>
+        <!-- cart widget dropdown (for >mobile screens) -->
         <div class="dropdown-menu dropdown-menu-end cart-dropdown">
-          <div class="cart-widget pb-3">
+          <div class="pb-3">
             <p class="cart-title px-3 my-2 fw-bold">Cart</p>
             <hr class="mb-0">
-            <div class="cart-widget-body p-3">
+            <div class="p-3">
               <!-- here go products -->
+                <!-- this is how a product component should look like -->
               <div class="cart-widget-product d-flex justify-content-between align-items-center">
                 <img class="rounded" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail">
                 <div class="cart-widget-product-text flex-fill">
@@ -67,41 +69,37 @@
                   <i class="bi-trash-fill text-muted"></i>
                 </button>
               </div>
+                <!-- product component end^^^  -->
             </div>
-            <a href="#"
-              class="btn btn-sm bg-gradient btn-orange text-white mx-3 py-3 d-block rounded-3 fw-bold">Checkout</a>
-
+            <a href="#" class="btn btn-sm bg-gradient btn-orange text-white mx-3 py-3 d-block rounded-3 fw-bold">Checkout</a>
           </div>
         </div>
       </div>
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#profile" aria-expanded="false"
-        aria-controls="profile">
-        <img src="images/image-avatar.png" class="nav-avatar rounded-circle" alt="avatar">
-      </button>
+      <a class="btn border-0" type="button">
+        <img src="images/image-avatar.png" class="nav-avatar rounded-circle" alt="avatar profile picture">
+      </a>
     </div>
-
-    <div class="collapse cart-collapse" id="cart">
-      <div class="card">
-        <div class="card-header">Cart</div>
-        <div class="card-body">
-          <div class="row">
-            <ol class="col-12">
-              <li class="row d-flex">
-                <div class="col-2">
-                  <img src="images/image-product-1-thumbnail.jpg" alt="">
-                </div>
-                <div class="col d-grid">
-                  <p class="text-muted">Fall Limited Edition Sneakers</p>
-                  <p class="muted">$125.00 x 3 <span class="text-bold">$375.00</span></p>
-                </div>
-                <div class="col-1">
-                  <button class="btn"><i class="bi-trash-fill"></i></button>
-                </div>
-              </li>
-            </ol>
-            <button class="btn btn-orange text-white">Checkout</button>
+    <!-- cart collapse (for mobile screens) -->
+    <div class="collapse cart-collapse bg-white rounded-3" id="cart">
+      <div class="px-3">
+        <p class="cart-title px-3 my-2 fw-bold">Cart</p>
+        <hr class="mb-0">
+        <div class="p-3">
+          <!-- here go products -->
+          <div class="cart-widget-product d-flex justify-content-between align-items-center">
+            <img class="rounded" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail">
+            <div class="cart-widget-product-text flex-fill">
+              <a class="text-muted m-0 text-decoration-none" role="button">Fall Limited Edition Sneakers</a>
+              <p class="text-muted m-0">$125 x 3 <span class="fw-bold text-dark">$375</span></p>
+            </div>
+            <button class="btn p-0 m-0">
+              <i class="bi-trash-fill text-muted"></i>
+            </button>
           </div>
         </div>
+        <a href="#"
+          class="btn btn-sm bg-gradient btn-orange text-white mx-3 py-3 d-block rounded-3 fw-bold">Checkout</a>
+
       </div>
     </div>
   </div>
