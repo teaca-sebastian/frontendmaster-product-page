@@ -1,20 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> 
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | E-commerce product page</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <!-- SCSS Bootstrap Override: -->
   <link rel="stylesheet" href="css/main.css">
   <script defer src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </head>
+
 <body>
-  <button class="btn btn-orange text-white btn-lg">This is a button</button>
+  <div class="container container-fluid">
+    <div class="navbar navbar-expand-md px-lg-5">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <img src="images/icon-menu.svg" alt="">
+      </button>
+      <a href="#" class="navbar-brand me-auto pt-0"><img src="images/logo.svg" class="align-middle" alt="Sneakers"></a>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Collections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Men</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Women</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="btn border-0 cart-button" type="button" aria-expanded="false" href="#" data-bs-toggle="dropdown">
+          <i class="bi-cart2 fs-3"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end cart-dropdown">
+          <div class="cart-widget pb-3">
+            <p class="cart-title px-3 my-2 fw-bold">Cart</p>
+            <hr class="mb-0">
+            <div class="cart-widget-body p-3">
+              <!-- here go products -->
+              <div class="cart-widget-product d-flex justify-content-between align-items-center">
+                <img class="rounded" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail">
+                <div class="cart-widget-product-text flex-fill">
+                  <a class="text-muted m-0 text-decoration-none" role="button">Fall Limited Edition Sneakers</a>
+                  <p class="text-muted m-0">$125 x 3 <span class="fw-bold text-dark">$375</span></p>
+                </div>
+                <button class="btn p-0 m-0">
+                  <i class="bi-trash-fill text-muted"></i>
+                </button>
+              </div>
+            </div>
+            <a href="#"
+              class="btn btn-sm bg-gradient btn-orange text-white mx-3 py-3 d-block rounded-3 fw-bold">Checkout</a>
+
+          </div>
+        </div>
+      </div>
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#profile" aria-expanded="false"
+        aria-controls="profile">
+        <img src="images/image-avatar.png" class="nav-avatar rounded-circle" alt="avatar">
+      </button>
+    </div>
+
+    <div class="collapse cart-collapse" id="cart">
+      <div class="card">
+        <div class="card-header">Cart</div>
+        <div class="card-body">
+          <div class="row">
+            <ol class="col-12">
+              <li class="row d-flex">
+                <div class="col-2">
+                  <img src="images/image-product-1-thumbnail.jpg" alt="">
+                </div>
+                <div class="col d-grid">
+                  <p class="text-muted">Fall Limited Edition Sneakers</p>
+                  <p class="muted">$125.00 x 3 <span class="text-bold">$375.00</span></p>
+                </div>
+                <div class="col-1">
+                  <button class="btn"><i class="bi-trash-fill"></i></button>
+                </div>
+              </li>
+            </ol>
+            <button class="btn btn-orange text-white">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const cartButton = document.querySelector('.cart-button')
+    const cartDropdown = document.querySelector('.cart-dropdown')
+    const cartCollapse = document.querySelector('.cart-collapse')
+
+    function handleCart(x) {
+      if (x.matches) { // If media query matches
+        cartButton.setAttribute('data-bs-toggle', 'collapse')
+        cartButton.setAttribute('data-bs-target', '#cart')
+        cartDropdown.classList.remove('show')
+      } else {
+        cartButton.setAttribute('data-bs-toggle', 'dropdown')
+        cartCollapse.classList.remove('show')
+      }
+    }
+    // Bootstrap sm breakpoint (media query)
+    var x = window.matchMedia("(max-width: 576px)")
+
+    handleCart(x) // Call listener function at run time
+    x.addListener(handleCart) // Attach listener function on state changes
+  </script>
 </body>
+
 </html>
 <!-- 
   Collections
