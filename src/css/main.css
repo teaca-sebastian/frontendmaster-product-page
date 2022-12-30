@@ -12970,6 +12970,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.offcanvas {
+  --bs-offcanvas-width: 200px;
+}
+
 :root {
   --bs-body-font-family: "Kumbh Sans";
 }

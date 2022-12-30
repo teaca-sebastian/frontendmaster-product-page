@@ -35,6 +35,9 @@
 // 9. My own css
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
+.offcanvas {
+    --bs-offcanvas-width: 200px;
+}
 
 :root {
     --bs-body-font-family: 'Kumbh Sans';
