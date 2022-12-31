@@ -13017,6 +13017,10 @@ img {
   width: 15em;
 }
 
+.cart-collapse {
+  z-index: 10;
+}
+
 .offcanvas {
   width: 10em;
 }
