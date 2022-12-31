@@ -68,10 +68,6 @@
     width: 90vw;
 }
 
-.top-15 {
-    top: 12%;
-}
-
 img {
     cursor: pointer;
 }
@@ -97,6 +93,7 @@ img {
 
 .cart-collapse {
     z-index: 10;
+    top: 5.5em;
 }
 
 // offcanvas
