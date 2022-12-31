@@ -68,11 +68,13 @@ img {
     cursor: pointer;
 }
 
-// navbar and cart widget styles
+// navbar
 
 .nav-avatar {
     width: 2em;
 }
+
+// cart
 
 .cart-widget-product img {
     object-fit: cover;
@@ -83,6 +85,10 @@ img {
 .cart-widget-product-text {
     padding: .25em .75em;
     width: 15em;
+}
+
+.cart-collapse {
+    z-index: 10;
 }
 
 // offcanvas
