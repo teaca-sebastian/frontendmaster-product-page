@@ -10,30 +10,37 @@ const carouselThumbnails = document.querySelectorAll('#carouselThumbnailsContain
 const modalCarousel = document.querySelector('#modalCarousel')
 const modalThumbnails = document.querySelectorAll('#modalThumbnailsContainer img')
 
-function handleMobile(x) {
-    if (x.matches) {
-        // If media query matches
+function handleMobileWidget(mediaQuery) {
+    if (mediaQuery.matches) {
         cartButton.setAttribute('data-bs-toggle', 'collapse')
         cartButton.setAttribute('data-bs-target', '#cart')
         cartDropdown.classList.remove('show')
+    } else {
+        cartButton.setAttribute('data-bs-toggle', 'dropdown')
+        cartCollapse.classList.remove('show')
+    }
+}
 
+function handleMobileModal(mediaQuery) {
+    if (mediaQuery.matches) {
         document.querySelectorAll('img').forEach(image => {
             image.removeAttribute('data-bs-toggle')
         })
+    } else {
+        productCarousel.querySelectorAll('img').forEach(image => {
+            image.setAttribute('data-bs-toggle', 'modal')
+        })
+    }
+}
 
+function handleMobileCarousel(mediaQuery) {
+    if (mediaQuery.matches) {
         document.querySelector('#carouselThumbnailsContainer').classList.remove('w-75')
         document.querySelector('#carouselThumbnailsContainer').classList.add('w-100')
         productCarousel.classList.remove('w-75')
         productCarousel.classList.add('w-100')
         productCarousel.querySelector('.carousel-inner').classList.remove('rounded-4')
     } else {
-        cartButton.setAttribute('data-bs-toggle', 'dropdown')
-        cartCollapse.classList.remove('show')
-
-        productCarousel.querySelectorAll('img').forEach(image => {
-            image.setAttribute('data-bs-toggle', 'modal')
-        })
-
         document.querySelector('#carouselThumbnailsContainer').classList.remove('w-100')
         document.querySelector('#carouselThumbnailsContainer').classList.add('w-75')
         productCarousel.classList.remove('w-100')
@@ -41,11 +48,17 @@ function handleMobile(x) {
         productCarousel.querySelector('.carousel-inner').classList.add('rounded-4')
     }
 }
-// Bootstrap sm breakpoint (media query)
-var x = window.matchMedia("(max-width: 576px)")
 
-handleMobile(x) // Call listener function at run time
-x.addListener(handleMobile) // Attach listener function on state changes
+function handleMobile(mediaQuery) {
+    handleMobileWidget(mediaQuery)
+    handleMobileCarousel(mediaQuery)
+    handleMobileModal(mediaQuery)
+}
+// Bootstrap sm breakpoint (media query)
+var mediaQuery = window.matchMedia("(max-width: 576px)")
+
+handleMobile(mediaQuery) // Call listener function at run time
+mediaQuery.addListener(handleMobile) // Attach listener function on state changes
 // i know this is deprecated but it works :)
 
 // ### Carousel thumbnails and modal carousel scripts:
