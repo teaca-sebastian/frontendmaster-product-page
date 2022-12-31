@@ -10,31 +10,42 @@ const carouselThumbnails = document.querySelectorAll('#carouselThumbnailsContain
 const modalCarousel = document.querySelector('#modalCarousel')
 const modalThumbnails = document.querySelectorAll('#modalThumbnailsContainer img')
 
-function handleCart(x) {
-  if (x.matches) {
-     // If media query matches
-    cartButton.setAttribute('data-bs-toggle', 'collapse')
-    cartButton.setAttribute('data-bs-target', '#cart')
-    cartDropdown.classList.remove('show')
+function handleMobile(x) {
+    if (x.matches) {
+        // If media query matches
+        cartButton.setAttribute('data-bs-toggle', 'collapse')
+        cartButton.setAttribute('data-bs-target', '#cart')
+        cartDropdown.classList.remove('show')
 
-    document.querySelectorAll('img').forEach(image => {
-        image.removeAttribute('data-bs-toggle')
-    })
-  } else {
+        document.querySelectorAll('img').forEach(image => {
+            image.removeAttribute('data-bs-toggle')
+        })
 
-    productCarousel.querySelectorAll('img').forEach(image => {
-        image.setAttribute('data-bs-toggle', 'modal')
-    })
+        document.querySelector('#carouselThumbnailsContainer').classList.remove('w-75')
+        document.querySelector('#carouselThumbnailsContainer').classList.add('w-100')
+        productCarousel.classList.remove('w-75')
+        productCarousel.classList.add('w-100')
+        productCarousel.querySelector('.carousel-inner').classList.remove('rounded-4')
+    } else {
+        cartButton.setAttribute('data-bs-toggle', 'dropdown')
+        cartCollapse.classList.remove('show')
 
-    cartButton.setAttribute('data-bs-toggle', 'dropdown')
-    cartCollapse.classList.remove('show')
-  }
+        productCarousel.querySelectorAll('img').forEach(image => {
+            image.setAttribute('data-bs-toggle', 'modal')
+        })
+
+        document.querySelector('#carouselThumbnailsContainer').classList.remove('w-100')
+        document.querySelector('#carouselThumbnailsContainer').classList.add('w-75')
+        productCarousel.classList.remove('w-100')
+        productCarousel.classList.add('w-75')
+        productCarousel.querySelector('.carousel-inner').classList.add('rounded-4')
+    }
 }
 // Bootstrap sm breakpoint (media query)
 var x = window.matchMedia("(max-width: 576px)")
 
-handleCart(x) // Call listener function at run time
-x.addListener(handleCart) // Attach listener function on state changes
+handleMobile(x) // Call listener function at run time
+x.addListener(handleMobile) // Attach listener function on state changes
 // i know this is deprecated but it works :)
 
 // ### Carousel thumbnails and modal carousel scripts:
@@ -55,7 +66,7 @@ function updateCarouselActive(carousel, index) {
     // remove .active from all
     carouselItems.forEach(item => {
         item.classList.remove('active')
-    })        
+    })
     // add .active to one with showIndex index
     carouselItems[index].classList.add('active')
 }
@@ -64,7 +75,6 @@ function updateCarouselActive(carousel, index) {
 
 productCarousel.addEventListener('slide.bs.carousel', event => {
     const index = event.relatedTarget.querySelector('img').dataset.index - 1
-    console.log(event.relatedTarget.querySelector('img'))
     updateThumbnails(carouselThumbnails, index)
     updateCarouselActive(modalCarousel, index)
     updateThumbnails(modalThumbnails, index)
