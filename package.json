@@ -1,5 +1,30 @@
 {
+  "name": "bootstrap-ecommerce-product-page-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "dependencies": {
     "bootstrap": "^5.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass-build": "sass --watch docs/scss/main.scss:docs/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teaca-sebastian/frontendmaster-product-page.git"
+  },
+  "keywords": [],
+  "author": "teaca-sebastian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teaca-sebastian/frontendmaster-product-page/issues"
+  },
+  "homepage": "https://github.com/teaca-sebastian/frontendmaster-product-page#readme",
+  "devDependencies": {
+    "sass": "^1.57.1"
   }
 }
